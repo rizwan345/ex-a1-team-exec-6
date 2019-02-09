@@ -44,8 +44,8 @@ public class PlayListTableModel implements TableModel {
 	private boolean albumVisible = true;
 	private boolean genreVisible = true;
 
-	private enum PlayListColumn {FAVORITE, TRACK, TITLE, ARTIST, ALBUM, GENRE, DURATION}
-	private static PlayListColumn[] headers = {PlayListColumn.FAVORITE, PlayListColumn.TRACK, PlayListColumn.TITLE, PlayListColumn.ARTIST, PlayListColumn.ALBUM, PlayListColumn.GENRE, PlayListColumn.DURATION};
+	private enum PlayListColumn {FAVORITE, TRACK, TITLE, ARTIST, ALBUM, GENRE, DURATION, FILE_LOCATION}
+	private static PlayListColumn[] headers = {PlayListColumn.FAVORITE, PlayListColumn.TRACK, PlayListColumn.TITLE, PlayListColumn.ARTIST, PlayListColumn.ALBUM, PlayListColumn.GENRE, PlayListColumn.DURATION, PlayListColumn.FILE_LOCATION};
 	private PlayListColumn[] currentHeaders;
 	private static HashMap<PlayListColumn, Class> classes;
 	
@@ -58,6 +58,7 @@ public class PlayListTableModel implements TableModel {
 		classes.put(PlayListColumn.ALBUM, String.class);
 		classes.put(PlayListColumn.GENRE, String.class);
 		classes.put(PlayListColumn.DURATION, Long.class);
+		classes.put(PlayListColumn.FILE_LOCATION, Long.class);
 	}
 	
 	private static HashMap<PlayListColumn, String> columnNames;
@@ -71,6 +72,7 @@ public class PlayListTableModel implements TableModel {
 		columnNames.put(PlayListColumn.ALBUM, LanguageTool.getString("ALBUM"));
 		columnNames.put(PlayListColumn.GENRE, LanguageTool.getString("GENRE"));
 		columnNames.put(PlayListColumn.DURATION, LanguageTool.getString("DURATION"));
+		columnNames.put(PlayListColumn.FILE_LOCATION, LanguageTool.getString("FILE_LOCATION"));
 	}
 	
 	public PlayListTableModel() {
@@ -103,7 +105,8 @@ public class PlayListTableModel implements TableModel {
 			currentHeaders[c++] = PlayListColumn.ALBUM;
 		if (genreVisible)
 			currentHeaders[c++] = PlayListColumn.GENRE;
-		currentHeaders[c] = PlayListColumn.DURATION;
+		currentHeaders[c++] = PlayListColumn.DURATION;
+		currentHeaders[c] = PlayListColumn.FILE_LOCATION;
 	}
 	
 	private PlayListColumn getColumn(int colIndex) {
@@ -145,8 +148,10 @@ public class PlayListTableModel implements TableModel {
 			return file.getAlbum();
 		else if (c == PlayListColumn.GENRE)
 			return file.getGenre();
-		else
+		else if (c == PlayListColumn.DURATION)
 			return file.getDuration();
+		else
+			return file.getPath();
 	}
 
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
