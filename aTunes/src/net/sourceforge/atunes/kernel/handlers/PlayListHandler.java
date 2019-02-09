@@ -50,6 +50,7 @@ import net.sourceforge.atunes.utils.language.LanguageTool;
 
 import org.apache.log4j.Logger;
 
+import net.sourceforge.atunes.model.player.PlayListDurationComparator;
 
 public class PlayListHandler {
 	
@@ -196,6 +197,10 @@ public class PlayListHandler {
 		sortPlayList(PlayListGenreComparator.comparator);
 	}
 	
+	public void sortPlaylistByDuration() {
+		sortPlayList(PlayListDurationComparator.comparator);
+	}
+
 	
 	private static ArrayList<String> read(File file) {
 		try{
