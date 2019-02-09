@@ -527,6 +527,7 @@ view=new-view \
      toggle-statusbar \
      toggle-gutter \
      toggle-buffer-switcher \
+     toggle-scroll-bar \
      - \
      %scrolling \
      %splitting \
@@ -548,8 +549,10 @@ focus-buffer-switcher.label=Focus Buffer S$witcher
 toggle-line-numbers.label=$Line Numbers
 toggle-statusbar.label=Toggle S$tatus Bar
 toggle-gutter.label=Toggle $Gutter
+toggle-scroll-bar.label=$Scroll Bars
 show-context-menu.label=Show Context Menu
 toggle-full-screen.label=Toggle $full-screen mode
+view.scrollBars=true
 
 #{{{ Scrolling menu
 scrolling=scroll-to-current-line \

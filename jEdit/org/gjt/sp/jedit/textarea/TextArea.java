@@ -145,6 +145,15 @@ public abstract class TextArea extends JComponent
 		popupEnabled = true;
 	} //}}}
 
+	public boolean scrollBarsVisible()
+	{
+		return horizontal.isVisible();
+	}
+	public void setScrollBarsVisible(boolean show) {
+		horizontal.setVisible(show);
+		vertical.setVisible(show);
+	}
+	
 	//{{{ getFoldPainter() method
 	public FoldPainter getFoldPainter()
 	{

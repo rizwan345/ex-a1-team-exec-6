@@ -1072,6 +1072,8 @@ public class EditPane extends JPanel implements EBComponent, BufferSetListener
 
 		textArea.setCtrlForRectangularSelection(jEdit.getBooleanProperty(
 			"view.ctrlForRectangularSelection"));
+		
+		textArea.setScrollBarsVisible(jEdit.getBooleanProperty("view.scrollBars"));
 
 		textArea.propertiesChanged();
 

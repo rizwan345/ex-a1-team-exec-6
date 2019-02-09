@@ -1455,6 +1455,17 @@
 	</CODE>
 </ACTION>
 
+<ACTION NAME="toggle-scroll-bar">
+	<CODE>
+		boolean isVisible = jEdit.getBooleanProperty("view.scrollBars");
+		jEdit.setBooleanProperty("view.scrollBars", !isVisible);
+		jEdit.propertiesChanged();
+	</CODE>
+	<IS_SELECTED>
+		return textArea.scrollBarsVisible();
+	</IS_SELECTED>
+</ACTION>
+
 <ACTION NAME="toggle-multi-select">
 	<CODE>
 		textArea.toggleMultipleSelectionEnabled();
